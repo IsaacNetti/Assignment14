@@ -8,36 +8,43 @@
 
 <body>
     <header>
-        <h1>Recipes</h1>
-        <a href="#" id="add-link">+</a>
+        <h1>Albums</h1>
+        <a href="#" id="add-link">Add</a>
     </header>
-
-        <div id="recipe-list" class="columns"></div>
-    </div>
-    <div id="add-edit-recipe-container" class="dialog transparent">
+    
+        <div id="album-list" class="columns"></div>
+    <div id="add-album-container" class="dialog transparent">
         <span class="close">&times;</span>
 
-        <h3 id="add-edit-title">Recipe</h3>
-        <form id="add-edit-recipe-form" method="post">
-            <input type="hidden" name="_id" value="-1" />
+        <h3 id="add-title">album</h3>
+        <form id="add-album-form" method="post">
             <p>
-                <label for="name ">Recipe Name:</label>
+                <label for="name ">Album Name:</label>
                 <input type="text" id="name" name="name" required />
             </p>
             <p>
-                <label for="description">Description:</label>
-                <input type="text" id="description" name="description" required />
+                <label for="artist">Artist:</label>
+                <input type="text" id="artist" name="artist" required />
+            </p>
+            <p>
+                <label for="rating">Rating:</label>
+                <input type="text" id="rating" name="rating" required />
+            </p>
+            <p>
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" name="genre" required />
             </p>
 
             <p>
-                <label for="img">Upload Image:</label>
-                <input type="file" id="img" name="img" />
+                <label for="released">Release Date:</label>
+                <input type="text" id="released" name="released" required />
             </p>
+            
 
-            <p id="ingredients-p ">
-                <label class="inline">Ingredients:</label>
-                <a href="#" id="add-ingredient">Add Ingredient</a>
-                <section id="ingredient-boxes"></section>
+            <p id="songs-p ">
+                <label class="inline">Songs:</label>
+                <a href="#" id="add-song">Add Song</a>
+                <section id="song-boxes"></section>
             </p>
             <p>
                 <button type="submit">Submit</button>

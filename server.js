@@ -13,91 +13,114 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
-let recipes = [{
-        _id: 1,
-        name: "Banana Bread",
-        description: "Extra soft and bannanny",
-        rating: 4,
-        ingredients: [
-            "3 very ripe bananas, (medium/large)",
-            "½ cup unsalted butter, (8 Tbsp) at room temperature",
-            "3/4 cup granulated sugar",
-            "2 large eggs, lightly beaten",
-            "1 ½ cups all-purpose flour",
-            "1 tsp baking soda",
-            "½ tsp salt",
-            "½ tsp vanilla extract",
-            "1 cup walnuts",
-            "½ cup raisins",
+let albums = [{
+        name: "Maybe Man",
+        artist: "AJR", 
+        rating:"7.9/10",
+        genre:"Alternitive Pop",
+        releaseDate: "11/10/2023",
+        songs: [
+            "Maybe Man",
+            "Touchy Feely Fool",
+            "Yes I'm A Mess",
+            "The Dumb Song",
+            "Inertia",
+            "Turning out Pt. iii",
+            "Hole in the Bottom of My Brain",
+            "The DJ is Crying for help",
+            "I Won't",
+            "Steve's Going to London",
+            "God is Really Real",
+            "2085",
         ],
     },
     {
-        _id: 2,
-        name: "Chocolate Chip Cookies",
-        description: "Very chocolately cookies",
-        ingredients: [
-            "1 cup salted butter softened",
-            "1 cup granulated sugar",
-            "1 cup light brown sugar packed",
-            "2 teaspoons pure vanilla extract",
-            "2 large eggs",
-            "3 cups all-purpose flour",
-            "1 teaspoon baking soda",
-            "½ teaspoon baking powder",
-            "1 teaspoon sea salt",
-            "2 cups chocolate chips (14 oz)",
+        name: "1989 (Taylor's version)",
+        artist: "Taylor Swift", 
+        rating:"9.8/10",
+        genre:"Pop",
+        releaseDate: "10/27/2023",
+        songs: [
+            "Welcome to New York",
+            "Blank Space",
+            "Style",
+            "Out Of The Woods",
+            "All You Had To Do Was Stay",
+            "Shake It Off",
+            "I Wish You Would",
+            "Bad Blood",
+            "Wildest Dreams",
+            "How You Get The Girl",
+            "This Love",
+            "I Know Places",
+            "Clean",
+            "Wonderland",
+            "You Are In Love",
+            "New Romantics",
         ],
     },
     {
-        _id: 3,
-        name: "Vanilla Cake",
-        description: "Real vanilla bean in a cake",
-        ingredients: [
-            "3 and 2/3 cups (433g) cake flour (spoon & leveled)",
-            "1 teaspoon salt",
-            "2 teaspoons baking powder",
-            "3/4 teaspoon baking soda",
-            "1 and 1/2 cups (345g) unsalted butter, softened to room temperature",
-            "2 cups (400g) granulated sugar",
-            "3 large eggs + 2 additional egg whites, at room temperature*",
-            "1 Tablespoon pure vanilla extract (yes, Tbsp!)",
-            "1 and 1/2 cups (360ml) buttermilk, at room temperature*",
+        name: "Stick Season",
+        artist: "Noah Kahan", 
+        rating:"8.4/10",
+        genre:"Indie Folk",
+        releaseDate: "06/09/2023",
+        songs: [
+            "Northern Attitude",
+            "Stick Season",
+            "All My Love",
+            "She Calls Me Back",
+            "Come Over",
+            "New Perspective",
+            "Everywhere, Everything",
+            "Orange Juice",
+            "Strawberry Wine",
+            "Growing Sideways",
+            "Halloween",
+            "Homesick",
+            "Still",
+            "The View Between Villages",
         ],
     },
 ];
 
-app.get("/api/recipes", (req, res) => {
-    res.send(recipes);
+app.get("/api/albums", (req, res) => {
+    res.send(albums);
 });
 
-app.post("/api/recipes", upload.single("img"), (req, res) => {
-    const result = validateRecipe(req.body);
+app.post("/api/albums",upload.single("img"), (req, res) => {
+    const result = validatealbum(req.body);
 
     if (result.error) {
+        console.log("here");
         res.status(400).send(result.error.details[0].message);
         return;
     }
 
-    const recipe = {
-        _id: recipes.length + 1,
+    const album = {
         name: req.body.name,
-        description: req.body.description,
-        ingredients: req.body.ingredients.split(",")
+        artist: req.body.artist,
+        rating: req.body.rating,
+        genre: req.body.genre,
+        released: req.body.released,
+        songs: req.body.songs.split(",")
     }
 
-    recipes.push(recipe);
-    res.send(recipes);
+    albums.push(album);
+    res.send(albums);
 });
 
-const validateRecipe = (recipe) => {
+const validatealbum = (album) => {
     const schema = Joi.object({
-        _id: Joi.allow(""),
-        ingredients: Joi.allow(""),
         name: Joi.string().min(3).required(),
-        description: Joi.string().min(3).required()
+        artist: Joi.string().min(3).required(),
+        rating: Joi.string().min(3).required(),
+        genre: Joi.string().min(3).required(),
+        released: Joi.string().min(3).required(),
+        songs: Joi.allow("")
     });
 
-    return schema.validate(recipe);
+    return schema.validate(album);
 };
 
 app.listen(3000, () => {

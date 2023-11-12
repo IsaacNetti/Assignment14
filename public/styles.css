@@ -1,55 +1,42 @@
-:root {
-    --primary: coral;
-    --secondary: cornflowerblue;
-}
-
-
 /* Structure */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: azure;
+    background-color: #F4E0B9;
 }
-
-.recipe {
+header{
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color:#000;
+    padding: 5px;
+}
+a:hover{
+    color: #A8A196;
+}
+.album {
     padding: 10px;
     margin: 10px;
-    background: lightblue;
+    background: #7D7463;
     border-radius: 5px;
 }
 
-.recipe img {
-    max-width: 90%;
-    display: block;
-    margin: auto;
-}
-
-#recipe-details-column {
-    padding: 10px;
-    margin: 10px;
-    background: lightblue;
-    border-radius: 5px;
-}
 
 #add-link {
     font-size: 2em;
-    border: 1px solid crimson;
+    border: 2px solid #7D7463;
 }
 
-#edit-link {
-    float: right;
-    margin-right: 10px;
-}
-
-#delete-link {
-    float: right;
-}
-
-#add-edit-recipe-container {
+#add-album-container {
     padding: 10px;
     margin: 10px;
-    background: lightblue;
+    background: #7D7463;
     border-radius: 5px;
+}
+#album-list{
+    max-width: 90%;
+    margin:auto;
 }
 
 
@@ -63,63 +50,25 @@ label {
     display: inline;
 }
 
-#ingredients-p input {
+#songs-p input {
     margin-top: 5px;
 }
 
-#add-ingredient {
-    color: darkblue;
+#add-song {
+    color: #A8A196;
     font-size: 0.75em;
     text-align: right;
 }
 
-
-/* Modal Dialog */
-
-#modal-background {
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: scroll;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-}
-
-
-/* Modal Content */
-
-.dialog {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 100%;
-}
-
-.dialog img {
-    max-width: fit-content;
-    display: block;
-    padding: 30px 5px 30px 30px;
-    margin: auto;
+#add-song:hover{
+    color: #000;
 }
 
 
 /* The Close Button */
 
 .close {
-    color: #aaaaaa;
+    color: #A8A196;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -136,13 +85,9 @@ label {
 
 /* Typography */
 
-#main-nav-items {
-    font-size: 1.2em;
-}
 
 a {
     text-decoration: none;
-    color: crimson;
 }
 
 .hidden {
@@ -160,14 +105,12 @@ a {
     .columns {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-around;
     }
-    .two-columns div {
-        flex: 1;
-    }
-    .recipe {
+    .album {
         width: 25%;
     }
-    #add-edit-recipe-container {
+    #add-album-container {
         max-width: 30%;
         margin: auto;
     }
