@@ -102,7 +102,7 @@ app.post("/api/albums",upload.single("img"), (req, res) => {
         artist: req.body.artist,
         rating: req.body.rating,
         genre: req.body.genre,
-        released: req.body.releaseDate,
+        releaseDate: req.body.released,
         songs: req.body.songs.split(",")
     }
 
