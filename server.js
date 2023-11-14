@@ -16,9 +16,9 @@ app.get("/", (req, res) => {
 let albums = [{
         name: "Maybe Man",
         artist: "AJR", 
-        rating:"7.9/10",
+        rating:"7",
         genre:"Alternitive Pop",
-        releaseDate: "11/10/2023",
+        releaseDate: "2023-11-10",
         songs: [
             "Maybe Man",
             "Touchy Feely Fool",
@@ -37,9 +37,9 @@ let albums = [{
     {
         name: "1989 (Taylor's version)",
         artist: "Taylor Swift", 
-        rating:"9.8/10",
+        rating:"9",
         genre:"Pop",
-        releaseDate: "10/27/2023",
+        releaseDate: "2023-10-27",
         songs: [
             "Welcome to New York",
             "Blank Space",
@@ -62,9 +62,9 @@ let albums = [{
     {
         name: "Stick Season",
         artist: "Noah Kahan", 
-        rating:"8.4/10",
+        rating:"8",
         genre:"Indie Folk",
-        releaseDate: "06/09/2023",
+        releaseDate: "2023-06-09",
         songs: [
             "Northern Attitude",
             "Stick Season",
@@ -114,7 +114,7 @@ const validatealbum = (album) => {
     const schema = Joi.object({
         name: Joi.string().min(3).required(),
         artist: Joi.string().min(3).required(),
-        rating: Joi.string().min(3).required(),
+        rating: Joi.string().required(),
         genre: Joi.string().min(3).required(),
         released: Joi.string().min(3).required(),
         songs: Joi.allow("")

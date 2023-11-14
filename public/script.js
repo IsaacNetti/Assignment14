@@ -25,7 +25,7 @@ const showAlbums = async() => {
 
         const p2 = document.createElement("p");
         section.append(p2);
-        p2.innerHTML = "Rating: "+album.rating;
+        p2.innerHTML = "Rating: "+album.rating+"/10";
 
         const p3 = document.createElement("p");
         section.append(p3);
